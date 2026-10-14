@@ -41,6 +41,8 @@ ul{padding:0;list-style:none}
 .pb i{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--bg) 0 3px,transparent 3.5px),conic-gradient(from 200deg,var(--acc),var(--acc3),var(--acc))}
 .h2{font:500 clamp(32px,4vw,52px)/1.08 'Inter Tight','Inter',sans-serif;letter-spacing:-.04em;text-wrap:balance;background:linear-gradient(180deg,#fff 35%,#8d88a3 110%);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .1em .08em}
 .h3{font:600 19px/1.3 'Inter Tight','Inter',sans-serif;letter-spacing:-.015em}
+.card .h3{color:var(--acc3)}
+.pc .h3,.pd .h3{color:var(--ink)}
 .lead{color:var(--mute);font-size:17px;max-width:62ch;margin-top:18px;text-wrap:pretty}
 .mute{color:var(--mute)}
 
@@ -71,6 +73,14 @@ ul{padding:0;list-style:none}
 
 /* ---------- header ---------- */
 .hd{position:fixed;inset:0 0 auto;z-index:50;height:var(--hd);background:rgba(8,7,15,.7);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid var(--line)}
+.topb{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;row-gap:10px;margin:0 0 30px}
+.tbi{position:relative;display:flex;align-items:baseline;gap:6px;padding:0 30px;font-size:14px;line-height:1;white-space:nowrap;color:#e9e6f3;transition:color .2s}
+.tbi+.tbi::before{content:"";position:absolute;left:0;top:50%;width:1px;height:22px;margin-top:-11px;background:linear-gradient(180deg,transparent,rgba(155,130,255,.7),transparent)}
+a.tbi:hover,a.tbi:hover small{color:var(--acc3)}
+.tbi small{font-size:13.5px;color:var(--mute);transition:color .2s}
+.tbi b{font-weight:600}
+@media (max-width:900px){.tbi{padding:0 16px;font-size:13px}.tbi small{font-size:12.5px}}
+@media (max-width:640px){.topb{flex-direction:column;row-gap:8px;margin-bottom:22px}.tbi+.tbi::before{display:none}}
 .hd-in{height:100%;display:flex;align-items:center;gap:18px;white-space:nowrap}
 .hd .w{max-width:1320px}
 .logo{display:flex;align-items:center;gap:10px;flex:none}
@@ -89,14 +99,14 @@ ul{padding:0;list-style:none}
 .dd a:hover{background:rgba(255,255,255,.05);color:var(--ink)}
 .dd.mega{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 18px;width:min(860px,calc(100vw - 48px));left:-200px;padding:18px}
 .nav li.open .dd.mega{display:grid}
-.dd.mega h4{margin:0 0 2px;padding:6px 12px 2px;font:600 14px/1.3 'Inter Tight',sans-serif;color:var(--ink)}
+.dd.mega h4{margin:0 0 2px;padding:6px 12px 2px;font:600 14px/1.3 "Inter Tight",sans-serif;color:var(--acc3)}
 .dd.mega h4 a{padding:0;color:inherit}
-.dd.mega h4 a:hover{background:none;color:var(--acc3)}
+.dd.mega h4 a:hover{background:none;color:#fff}
 .dd.mega a{padding:5px 12px}
 .hd-r{display:flex;align-items:center;gap:10px}
-.ms{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;flex:none;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line2);transition:background-color .2s}
+.ms{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;flex:none;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(155,130,255,.55),0 0 18px -8px rgba(124,92,255,.7);transition:background-color .2s,box-shadow .2s}
 .ms svg{width:17px;height:17px}
-.ms:hover{background:rgba(255,255,255,.1)}
+.ms:hover{background:rgba(124,92,255,.22);box-shadow:inset 0 0 0 1px rgba(155,130,255,.85),0 0 22px -6px rgba(124,92,255,.85)}
 .ct{line-height:1.2;text-align:right;margin:0 4px}
 .ct a{display:block}
 .ct .ph{font-weight:600;font-size:15px}
@@ -127,7 +137,7 @@ ul{padding:0;list-style:none}
 .hpts .tk{flex:none}
 .hero-act{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .hero-act .btn{height:48px;min-height:48px}
-.hero-act .btn-g{box-shadow:inset 0 0 0 1px var(--line2),0 0 0 4px rgba(255,255,255,.04)}
+.hero-act .btn-g{box-shadow:inset 0 0 0 1px rgba(155,130,255,.55),0 0 18px -8px rgba(124,92,255,.7)}
 .hero-act .btn-g:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35),0 0 0 4px rgba(124,92,255,.14),0 10px 30px -8px rgba(124,92,255,.7)}
 
 /* dashboard mock */
@@ -167,10 +177,21 @@ ul{padding:0;list-style:none}
 .gauge{position:relative;padding:0 10px}
 .gauge b{position:absolute;left:0;right:0;bottom:4px;text-align:center;font:500 22px/1 'Inter Tight',sans-serif}
 .spark{width:100%;height:120px}
-.flt{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 14px 7px 7px;border-radius:999px;background:rgba(20,19,31,.92);box-shadow:inset 0 0 0 1px var(--line2),0 16px 40px -12px rgba(0,0,0,.8);font-size:13.5px;font-weight:500;backdrop-filter:blur(8px)}
-.f1{left:-8px;top:110px}
-.f2{right:-12px;top:-18px}
-.f3{right:-24px;top:250px}
+.mfc{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;padding:10px 16px 10px 10px;border-radius:16px;background:rgba(26,24,42,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px rgba(155,130,255,.35),inset 0 1px 0 rgba(255,255,255,.08),0 24px 48px -20px rgba(0,0,0,.95),0 0 36px -12px rgba(124,92,255,.65)}
+.mfc-ic{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:linear-gradient(180deg,#9479FF,#6E4DF6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),inset 0 1px 0 rgba(255,255,255,.35),0 8px 18px -6px rgba(124,92,255,.8)}
+.mfc-ic svg{width:19px;height:19px}
+.mfc b{display:block;font:600 14.5px/1.25 'Inter Tight',sans-serif;color:#fff;white-space:nowrap}
+.mfc small{display:block;margin-top:2px;font-size:12px;line-height:1.3;color:var(--mute);white-space:nowrap}
+.mfc1{left:-64px;top:310px}
+.mfc2{right:-64px;top:452px}
+.mfc3{left:-64px;top:452px}
+@media (prefers-reduced-motion:no-preference){
+  .mfc{animation:fxf 6s ease-in-out var(--fd,0s) infinite}
+  .js .mock .mfc{opacity:0}
+  .js .mock.in .mfc{transition:opacity .6s ease var(--t,1s);opacity:1}
+}
+@media (max-width:1100px){.mfc1{left:12px;top:-28px}.mfc2{right:12px;top:-28px}.mfc3{display:none}}
+@media (max-width:640px){.mfc{padding:7px 12px 7px 7px;gap:8px;border-radius:13px}.mfc-ic{width:28px;height:28px;border-radius:8px}.mfc-ic svg{width:15px;height:15px}.mfc b{font-size:12.5px}.mfc small{display:none}.mfc1{left:6px}.mfc2{right:6px}}
 
 /* ---------- stats ---------- */
 .stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
@@ -256,6 +277,8 @@ ul{padding:0;list-style:none}
 .pc p{color:var(--mute);font-size:14.5px;flex:1}
 .pc .bt{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding-top:16px;border-top:1px solid var(--line);margin-top:6px}
 .pc .tm{font-size:12.5px;color:var(--faint)}
+.pc .btn-g{box-shadow:inset 0 0 0 1px rgba(155,130,255,.55),0 0 18px -8px rgba(124,92,255,.7)}
+.pc .btn-g:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35),0 0 0 4px rgba(124,92,255,.14),0 10px 30px -8px rgba(124,92,255,.7)}
 .pc .pr{font:500 23px/1.15 'Inter Tight',sans-serif;letter-spacing:-.03em;margin-top:4px;background:linear-gradient(180deg,#e4dcff,#9b82ff);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.12em}
 .pc.feat .h3{font-size:26px}
 .pc.pq{background:radial-gradient(ellipse 90% 120% at 100% 0%,rgba(124,92,255,.3),transparent 60%),radial-gradient(ellipse 70% 90% at 0% 100%,rgba(204,51,230,.16),transparent 60%),linear-gradient(180deg,var(--c3),var(--c1));box-shadow:inset 0 0 0 1px rgba(155,130,255,.35),inset 0 1px 0 rgba(255,255,255,.1)}
@@ -426,6 +449,7 @@ ul{padding:0;list-style:none}
 .fm .msg:empty{display:none}
 .agree{font-size:12.5px;color:var(--faint);line-height:1.5}
 .agree a{color:var(--mute);text-decoration:underline;text-underline-offset:2px}
+.lead-b .fm .agree,.cb .fm .agree{margin-top:20px}
 .ok{display:none;padding:26px;border-radius:var(--r-md);background:rgba(124,92,255,.08);box-shadow:inset 0 0 0 1px rgba(155,130,255,.3)}
 .ok b{display:block;font:600 19px/1.3 'Inter Tight',sans-serif;margin-bottom:6px}
 .sent .fm{display:none}
@@ -446,7 +470,7 @@ ul{padding:0;list-style:none}
 .pw-kp div{padding:6px 8px;border-radius:9px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line)}
 .pw-kp small{display:block;font-size:10px;color:var(--faint)}
 .pw-kp b{display:block;font:600 13px/1.3 'Inter Tight',sans-serif;color:#fff;white-space:nowrap}
-.pw-kp b.up{color:var(--pos)}
+.pw-kp b.pg{color:var(--pos)}
 .pw-ch{position:absolute;left:10px;right:10px;top:92px;bottom:10px}
 .pw-ch svg{width:100%;height:100%}
 .pw-ch .pdot{position:absolute;left:96.7%;top:12%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(124,92,255,.35),0 0 14px #9b82ff}
@@ -626,7 +650,8 @@ ul{padding:0;list-style:none}
 .lead-b,.cb{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
 .contacts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .cnt{padding:32px}
-.cnt h3{font:500 32px/1.2 'Inter Tight',sans-serif;letter-spacing:-.025em;max-width:20ch;margin-bottom:20px}
+.cnt h3{font:500 32px/1.2 'Inter Tight',sans-serif;letter-spacing:-.025em;max-width:20ch;margin-bottom:20px;color:#fff}
+.cnt h3 span{background:linear-gradient(180deg,#bdb8cc,#6f6a85);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .08em .06em;margin:0 -.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .req{display:grid;gap:8px;color:var(--mute);font-size:14.5px}
 .req b{color:var(--ink);font-weight:500}
 .cl2{display:grid}
@@ -639,9 +664,9 @@ ul{padding:0;list-style:none}
 @media (max-width:1100px){.cnt.map{min-height:380px}}
 .soc{display:flex;gap:8px;margin-top:20px;align-items:center;flex-wrap:wrap}
 .soc .lb{color:var(--faint);font-size:14px;margin-right:6px}
-.so{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line2);font-size:12px;font-weight:600;transition:background-color .2s}
+.so{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(155,130,255,.55),0 0 18px -8px rgba(124,92,255,.7);font-size:12px;font-weight:600;transition:box-shadow .2s,background-color .2s}
 .so svg{width:17px;height:17px}
-.so:hover{background:rgba(255,255,255,.1)}
+.so:hover{background:rgba(124,92,255,.22);box-shadow:inset 0 0 0 1px rgba(155,130,255,.85),0 0 22px -6px rgba(124,92,255,.85)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;max-width:75%;margin-left:auto;margin-right:auto}
 .tags::after{content:"";order:1;flex-basis:100%;height:0}
 .tags.all::after{display:none}
@@ -659,8 +684,8 @@ ul{padding:0;list-style:none}
 .ft-brand .btn{margin-top:18px}
 .fcols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
 .fcols>div{display:grid;align-content:start;gap:26px}
-.fcols h4{margin:0 0 10px;font:600 14px/1.35 'Inter Tight',sans-serif}
-.fcols h4 a:hover{color:var(--acc3)}
+.fcols h4{margin:0 0 10px;font:600 14px/1.35 "Inter Tight",sans-serif;color:var(--acc3)}
+.fcols h4 a:hover{color:#fff}
 .fcols ul{display:grid;gap:6px}
 .fcols li a{color:var(--mute);font-size:13.5px}
 .fcols li a:hover{color:var(--ink)}
@@ -674,6 +699,7 @@ a.ftc:hover{background:rgba(124,92,255,.08);box-shadow:inset 0 0 0 1px rgba(155,
 @media (max-width:1100px){.ft-cards{grid-template-columns:1fr}}
 .ft-bot{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--faint);font-size:13px}
 .ft-bot a:hover{color:var(--ink)}
+.ft-bot>span:first-child{margin-right:auto}
 
 /* floating */
 .fab{position:fixed;right:22px;bottom:22px;z-index:40;display:grid;gap:10px;justify-items:center}
@@ -736,7 +762,6 @@ a.ftc:hover{background:rgba(124,92,255,.08);box-shadow:inset 0 0 0 1px rgba(155,
   .ft-top{grid-template-columns:1fr}
   .mg{grid-template-columns:1fr 1fr}
   .mg .pn:nth-child(n+3){display:none}
-  .f3{display:none}
 }
 @media (max-width:900px){
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -769,10 +794,6 @@ a.ftc:hover{background:rgba(124,92,255,.08);box-shadow:inset 0 0 0 1px rgba(155,
   .mock{margin-top:48px;padding:0}
   .mg{grid-template-columns:1fr}
   .mg .pn:nth-child(2){display:none}
-  .flt{font-size:12px;padding:5px 11px 5px 5px}
-  .flt .tk{width:18px;height:18px}
-  .f1{left:-4px;top:-18px}
-  .f2{right:-4px;top:auto;bottom:40px}
   .stats{grid-template-columns:1fr}
   .st:nth-child(5){grid-column:auto}
   .st{min-height:0}
@@ -809,7 +830,7 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 /* ===== video button & modal ===== */
 .btn-play{padding-left:8px}
 .play{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;color:#fff;background:linear-gradient(180deg,#9479FF,#6E4DF6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 0 0 0 rgba(124,92,255,.5);animation:ring 2.4s ease-out infinite}
-.play svg{margin-left:2px}
+.play svg{margin-left:0}
 @keyframes ring{0%{box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 0 0 0 rgba(124,92,255,.55)}70%,100%{box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 0 0 12px rgba(124,92,255,0)}}
 .vmdl .vbox{position:relative;width:min(960px,100%)}
 .vmdl .x{top:-48px;right:0}
@@ -844,9 +865,6 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
   /* hero dashboard: traffic grows month by month */
   .js .mock .bv{transform:scaleY(0)}
   .js .mock.in .bv{transition:transform .7s cubic-bezier(.3,1.3,.5,1) calc(.4s + var(--i)*.09s);transform:scaleY(1)}
-  .js .mock .flt{opacity:0;transform:translateY(10px)}
-  .js .mock.in .flt{transition:opacity .5s ease,transform .5s ease;opacity:1;transform:none}
-  .js .mock.in .f1{transition-delay:1.1s}.js .mock.in .f2{transition-delay:1.4s}.js .mock.in .f3{transition-delay:1.7s}
 
   /* 16 years: each year lights up in turn */
   .js .st .tick{opacity:0}
@@ -923,8 +941,6 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 }
 @media (max-width:640px){
   .win{-webkit-mask:linear-gradient(#000 82%,transparent);mask:linear-gradient(#000 82%,transparent)}
-  .f1{left:8px;top:-16px}
-  .f2{right:8px;top:auto;bottom:-6px}
   .badges{gap:8px}
 }
 .pc .pr{white-space:nowrap}
@@ -938,17 +954,8 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
   .pc.feat .pr{font-size:24px}
 }
 @media (max-width:1100px){
-  .f1{left:16px;top:-16px}
-  .f2{right:16px;top:-16px}
-}
-@media (max-width:1100px){
   .bars .bc:nth-child(even) small{visibility:hidden}
 }
-@media (max-width:640px){
-  .f1{left:8px;top:-16px}
-  .f2{right:8px;top:auto;bottom:-6px}
-}
-@media (min-width:1101px){.f1{top:300px}}
 @media (min-width:901px){
   .pc.feat{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto 1fr;column-gap:48px;align-items:start}
   .pc.feat .hot,.pc.feat .h3,.pc.feat p{grid-column:1}
@@ -989,14 +996,15 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 <section class="hero" id="top"><div class="spot" aria-hidden="true"></div><div class="w">
 <div class="hero-c">
 
+<div class="topb"><a class="tbi" href="https://astanahub.com/ru/" target="_blank" rel="noopener"><small>Резидент</small><b>Astana Hub</b></a><span class="tbi"><small>Участник</small><b>Сколково</b></span><span class="tbi"><small>Аккредитованы</small><b>Минцифры РФ</b></span><a class="tbi" href="https://reestr.digital.gov.ru/reestr/6684261/" target="_blank" rel="noopener"><small>Наш сервис</small><b>Webtronica</b><small>в Реестре ПО РФ</small></a></div>
 <h1 class="h1">Помогаем бизнесу<br><span>привлекать клиентов через сайт</span></h1>
 <ul class="hpts"><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Привлекаем заявки через SEO, контекст и другие каналы</span></li><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Берём на себя всё необходимое для роста сайта: техподдержку, контент, дизайн, маркетинг</span></li><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Создаем сайты любой сложности: от типовых CMS до кастомных решений с нуля</span></li><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Разрабатываем мобильные приложения, ERP/CRM-системы, блокчейн-проекты</span></li></ul>
-<div class="hero-act"><a class="btn btn-p btn-anim" href="#call" data-call>Заказать консультацию</a><button class="btn btn-g btn-play" type="button" data-video><span class="play"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" fill="currentColor"/></svg></span>Смотреть видео</button></div>
+<div class="hero-act"><a class="btn btn-p btn-anim" href="#call" data-call>Заказать консультацию</a><button class="btn btn-g btn-play" type="button" data-video><span class="play"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 5.4v13.2a1 1 0 0 0 1.5.86l10.6-6.6a1 1 0 0 0 0-1.72L8.7 4.54A1 1 0 0 0 7.2 5.4z" fill="currentColor"/></svg></span>Смотреть видео</button></div>
 </div>
 <div class="mock" aria-hidden="true" data-anim>
-<div class="flt f1"><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>SEO-продвижение</div>
-<div class="flt f2"><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Контекстная реклама</div>
-<div class="flt f3"><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Разработка сайтов</div>
+<div class="mfc mfc1" style="--t:1.1s;--fd:0s"><span class="mfc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20M7.8 12l2-2.2 1.6 1.4 2-2.4"/></svg></span><div><b>SEO-продвижение</b><small>рост органики</small></div></div>
+<div class="mfc mfc2" style="--t:1.4s;--fd:-2s"><span class="mfc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="#fff"/></svg></span><div><b>Контекстная реклама</b><small>заявки уже сейчас</small></div></div>
+<div class="mfc mfc3" style="--t:1.7s;--fd:-4s"><span class="mfc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12"/></svg></span><div><b>Разработка сайтов</b><small>под ключ</small></div></div>
 <div class="win">
 <aside class="sb"><div class="sb-l"><svg width="48" height="52" viewBox="0 0 48 52" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A3FFC"/><stop offset="1" stop-color="#E02BD8"/></linearGradient></defs><path d="M24 3 43 14v24L24 49 5 38V14z" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/><path d="M24 12v28M15 19v14M33 19v14" stroke="url(#lg)" stroke-width="4.4" stroke-linecap="round"/></svg><b>Webtronica</b></div>
 <ul><li class="on"><i></i>Обзор</li><li><i></i>Позиции</li><li><i></i>Трафик</li><li><i></i>Заявки</li><li><i></i>Отчёты</li><li><i></i>Настройки</li></ul></aside>
@@ -1130,7 +1138,7 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 </div></section>
 <section class="sec" id="it-produkty"><div class="w">
 <div class="shead"><span class="pb"><i></i>Продукты</span><h2 class="h2">Наши собственные сервисы и CRM</h2><p class="lead">Мы стремимся создавать свои собственные продукты, которые изменят цифровую-сферу в лучшую сторону, облегчат ведение, запуск и продвижение онлайн-проектов.</p></div>
-<div class="prods"><article class="card pd"><div class="pv pv1" data-anim aria-hidden="true"><div class="pw-bar"><i></i><i></i><i></i><span>webtronica</span></div><div class="pw-kp"><div style="--i:0"><small>Позиции</small><b>ТОП-10</b></div><div style="--i:1"><small>Трафик</small><b class="up">↑ рост</b></div><div style="--i:2"><small>Ошибки</small><b>0</b></div></div><div class="pw-ch"><svg viewBox="0 0 300 100" preserveAspectRatio="none"><defs><linearGradient id="pvg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7C5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#7C5CFF" stop-opacity="0"/></linearGradient></defs><path d="M0 25H300M0 50H300M0 75H300" stroke="rgba(255,255,255,.05)" vector-effect="non-scaling-stroke"/><path class="area" d="M0 88C40 84 60 78 90 70S150 64 180 48S250 22 290 12V100H0Z" fill="url(#pvg)"/><path class="draw slow" pathLength="100" d="M0 88C40 84 60 78 90 70S150 64 180 48S250 22 290 12" fill="none" stroke="#C9BCFF" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg><span class="pdot"></span><span class="pw-tip">+ трафик</span></div></div><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span><h3 class="h3">Вебтроника (Webtronica)</h3><p>Система мониторинга, аналитики и продвижения сайтов</p><a class="lnk" href="https://webtronica.io/">Узнать больше<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></article><article class="card pd"><div class="pv pv2" aria-hidden="true"><div class="pw-bar"><i></i><i></i><i></i><span>CRM · Сделки</span></div><div class="kb"><div class="kc"><small>Лиды <em>3</em></small><i style="--c:#9B82FF"></i><i style="--c:#F0B45A"></i></div><div class="kc"><small>В работе <em>2</em></small><i style="--c:#C13BE0"></i><i style="--c:#9B82FF"></i></div><div class="kc"><small>Готово <em>5</em></small><i style="--c:#4ADE80"></i><i style="--c:#4ADE80"></i></div></div><span class="kmv"></span></div><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4zM4 10h16M9 10v9"/></svg></span><h3 class="h3">CRM / ERP</h3><p>CRM- и ERP-система по управлению цифровым-агентством</p><a class="lnk" href="https://webtronics.ru/razrabotka-crm-sistemy">Узнать больше<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></article><article class="card pd"><div class="pv pv3" data-anim aria-hidden="true"><div class="pw-bar"><i></i><i></i><i></i><span>exchange</span></div><div class="pw-px"><b>BTC / USDT</b><strong>64 218,40</strong><em>+2,4%</em></div><div class="pw-tr"><svg viewBox="0 0 300 100" preserveAspectRatio="none"><path d="M0 25H300M0 50H300M0 75H300" stroke="rgba(255,255,255,.05)" vector-effect="non-scaling-stroke"/><path class="pln" d="M0 16H300" stroke="rgba(74,222,128,.6)" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/><g class="cdl" style="--i:0"><path d="M13 66V84" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="7" y="70" width="12" height="10" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:1"><path d="M38 66V80" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="32" y="70" width="12" height="6" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:2"><path d="M63 58V79" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="57" y="62" width="12" height="14" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:3"><path d="M88 58V70" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="82" y="62" width="12" height="4" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:4"><path d="M113 48V69" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="107" y="52" width="12" height="14" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:5"><path d="M138 48V62" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="132" y="52" width="12" height="6" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:6"><path d="M163 40V60" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="157" y="44" width="12" height="14" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:7"><path d="M188 34V48" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="182" y="38" width="12" height="6" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:8"><path d="M213 34V49" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="207" y="38" width="12" height="7" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:9"><path d="M238 26V47" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="232" y="30" width="12" height="15" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:10"><path d="M263 18V33" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="257" y="24" width="12" height="6" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:11"><path d="M288 10V27" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="282" y="16" width="12" height="8" rx="2" fill="#4ADE80"/></g></svg><div class="ob"><i class="a" style="--w:.55;--i:0"></i><i class="a" style="--w:.8;--i:1"></i><i class="a" style="--w:.35;--i:2"></i><i class="a" style="--w:.65;--i:3"></i><b>64 218</b><i class="bd" style="--w:.7;--i:4"></i><i class="bd" style="--w:.45;--i:5"></i><i class="bd" style="--w:.9;--i:6"></i><i class="bd" style="--w:.5;--i:7"></i></div></div></div><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12 4 7.5"/></svg></span><h3 class="h3">Криптобиржи</h3><p>Разработка криптобирж и обменников на основе готового решения</p><a class="lnk" href="https://webtronics.ru/cryptoexchange">Узнать больше<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></article></div>
+<div class="prods"><article class="card pd"><div class="pv pv1" data-anim aria-hidden="true"><div class="pw-bar"><i></i><i></i><i></i><span>webtronica</span></div><div class="pw-kp"><div style="--i:0"><small>Позиции</small><b>ТОП-10</b></div><div style="--i:1"><small>Трафик</small><b class="pg">↑ рост</b></div><div style="--i:2"><small>Ошибки</small><b>0</b></div></div><div class="pw-ch"><svg viewBox="0 0 300 100" preserveAspectRatio="none"><defs><linearGradient id="pvg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7C5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#7C5CFF" stop-opacity="0"/></linearGradient></defs><path d="M0 25H300M0 50H300M0 75H300" stroke="rgba(255,255,255,.05)" vector-effect="non-scaling-stroke"/><path class="area" d="M0 88C40 84 60 78 90 70S150 64 180 48S250 22 290 12V100H0Z" fill="url(#pvg)"/><path class="draw slow" pathLength="100" d="M0 88C40 84 60 78 90 70S150 64 180 48S250 22 290 12" fill="none" stroke="#C9BCFF" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg><span class="pdot"></span><span class="pw-tip">+ трафик</span></div></div><h3 class="h3">Вебтроника (Webtronica)</h3><p>Система мониторинга, аналитики и продвижения сайтов</p><a class="lnk" href="https://webtronica.io/">Узнать больше<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></article><article class="card pd"><div class="pv pv2" aria-hidden="true"><div class="pw-bar"><i></i><i></i><i></i><span>CRM · Сделки</span></div><div class="kb"><div class="kc"><small>Лиды <em>3</em></small><i style="--c:#9B82FF"></i><i style="--c:#F0B45A"></i></div><div class="kc"><small>В работе <em>2</em></small><i style="--c:#C13BE0"></i><i style="--c:#9B82FF"></i></div><div class="kc"><small>Готово <em>5</em></small><i style="--c:#4ADE80"></i><i style="--c:#4ADE80"></i></div></div><span class="kmv"></span></div><h3 class="h3">CRM / ERP</h3><p>CRM- и ERP-система по управлению цифровым-агентством</p><a class="lnk" href="https://webtronics.ru/razrabotka-crm-sistemy">Узнать больше<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></article><article class="card pd"><div class="pv pv3" data-anim aria-hidden="true"><div class="pw-bar"><i></i><i></i><i></i><span>exchange</span></div><div class="pw-px"><b>BTC / USDT</b><strong>64 218,40</strong><em>+2,4%</em></div><div class="pw-tr"><svg viewBox="0 0 300 100" preserveAspectRatio="none"><path d="M0 25H300M0 50H300M0 75H300" stroke="rgba(255,255,255,.05)" vector-effect="non-scaling-stroke"/><path class="pln" d="M0 16H300" stroke="rgba(74,222,128,.6)" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/><g class="cdl" style="--i:0"><path d="M13 66V84" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="7" y="70" width="12" height="10" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:1"><path d="M38 66V80" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="32" y="70" width="12" height="6" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:2"><path d="M63 58V79" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="57" y="62" width="12" height="14" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:3"><path d="M88 58V70" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="82" y="62" width="12" height="4" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:4"><path d="M113 48V69" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="107" y="52" width="12" height="14" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:5"><path d="M138 48V62" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="132" y="52" width="12" height="6" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:6"><path d="M163 40V60" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="157" y="44" width="12" height="14" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:7"><path d="M188 34V48" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="182" y="38" width="12" height="6" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:8"><path d="M213 34V49" stroke="#F06A8C" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="207" y="38" width="12" height="7" rx="2" fill="#F06A8C"/></g><g class="cdl" style="--i:9"><path d="M238 26V47" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="232" y="30" width="12" height="15" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:10"><path d="M263 18V33" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="257" y="24" width="12" height="6" rx="2" fill="#4ADE80"/></g><g class="cdl" style="--i:11"><path d="M288 10V27" stroke="#4ADE80" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect x="282" y="16" width="12" height="8" rx="2" fill="#4ADE80"/></g></svg><div class="ob"><i class="a" style="--w:.55;--i:0"></i><i class="a" style="--w:.8;--i:1"></i><i class="a" style="--w:.35;--i:2"></i><i class="a" style="--w:.65;--i:3"></i><b>64 218</b><i class="bd" style="--w:.7;--i:4"></i><i class="bd" style="--w:.45;--i:5"></i><i class="bd" style="--w:.9;--i:6"></i><i class="bd" style="--w:.5;--i:7"></i></div></div></div><h3 class="h3">Криптобиржи</h3><p>Разработка криптобирж и обменников на основе готового решения</p><a class="lnk" href="https://webtronics.ru/cryptoexchange">Узнать больше<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></article></div>
 </div></section>
 <section class="sec" id="partners"><div class="w">
 <div class="shead"><span class="pb"><i></i>Партнеры</span><h2 class="h2">Наши партнеры</h2><p class="lead">Развиваем партнерские связи, чтобы предлагать нашим клиентам более выгодные условия</p></div>
@@ -1148,7 +1156,7 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 </div></section>
 <section class="sec tight" id="contacts"><div class="w">
 <div class="contacts">
-<div class="card cnt"><h3>Первоклассная цифровая-команда готова решить вашу задачу!</h3>
+<div class="card cnt"><h3>Первоклассная цифровая-команда <span>готова решить вашу задачу!</span></h3>
 <div class="cl2">
 <div class="row"><span>Адрес</span><p>115193, г. Москва, ул. 7-ая Кожуховская, д. 14/1</p></div>
 <div class="row"><span>Телефон</span><a href="tel:+74954144055">+7 (495) 414 40 55</a></div>
@@ -1180,8 +1188,8 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 
 <div class="fab"><button class="up" type="button" aria-label="Наверх"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14.5l6-6 6 6"/></svg></button>
 <div class="pop"><a href="https://t.me/webtronics_agency?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21" target="_blank" rel="noopener"><span class="ms tg"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M20.7 4.1 3.4 10.8c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 1.7 5.2c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.1-2 4.4 3.2c.8.4 1.4.2 1.6-.8l2.9-13.7c.3-1.2-.5-1.7-1.3-1.3zM8.5 13.4l9.6-6.1c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4z"/></svg></span>Telegram</a><a href="https://max.ru/u/f9LHodD0cOJ-DbF1zFzXrv_97G1BmTD_dh-sxDAh-0t" target="_blank" rel="noopener"><span class="ms mx"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 4.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6z"/></svg></span>MAX</a><a href="#call" data-call><span class="ms" style="background:var(--grad)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>Заказать звонок</a></div>
-<button class="chat" type="button" aria-label="Связаться с нами" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><circle class="td" cx="8.6" cy="12" r="1.2" fill="#fff" stroke="none"/><circle class="td" cx="12.5" cy="12" r="1.2" fill="#fff" stroke="none"/><circle class="td" cx="16.4" cy="12" r="1.2" fill="#fff" stroke="none"/></svg></button></div>
-<div class="mdl vmdl" id="vmodal" role="dialog" aria-modal="true" aria-label="Видео о компании"><div class="vbox"><button class="x" type="button" aria-label="Закрыть"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="vframe"><div class="vph"><span class="play big"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" fill="currentColor"/></svg></span><p>Видео о компании скоро появится</p></div></div></div></div>
+<button class="chat" type="button" aria-label="Связаться с нами" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><circle class="td" cx="9.1" cy="13" r="1.2" fill="#fff" stroke="none"/><circle class="td" cx="13" cy="13" r="1.2" fill="#fff" stroke="none"/><circle class="td" cx="16.9" cy="13" r="1.2" fill="#fff" stroke="none"/></svg></button></div>
+<div class="mdl vmdl" id="vmodal" role="dialog" aria-modal="true" aria-label="Видео о компании"><div class="vbox"><button class="x" type="button" aria-label="Закрыть"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="vframe"><div class="vph"><span class="play big"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 5.4v13.2a1 1 0 0 0 1.5.86l10.6-6.6a1 1 0 0 0 0-1.72L8.7 4.54A1 1 0 0 0 7.2 5.4z" fill="currentColor"/></svg></span><p>Видео о компании скоро появится</p></div></div></div></div>
 <div class="mdl" id="modal" role="dialog" aria-modal="true" aria-labelledby="mh"><div class="card box fwrap"><button class="x" type="button" aria-label="Закрыть"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 <h2 id="mh">Получить бесплатную консультацию</h2><p class="sub">Оставьте заявку и мы вам перезвоним</p>
 <form class="fm" novalidate><input class="fld" name="name" type="text" placeholder="Ваше имя *" autocomplete="name" aria-label="Ваше имя"><input class="fld" name="phone" type="tel" placeholder="Телефон *" autocomplete="tel" aria-label="Телефон"><input class="fld" name="email" type="email" placeholder="Ваш e-mail *" autocomplete="email" aria-label="E-mail" required>
