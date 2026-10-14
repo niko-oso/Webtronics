@@ -55,6 +55,15 @@ ul{padding:0;list-style:none}
 .btn-g{background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px var(--line2)}
 .btn-g:hover{color:#fff;background:linear-gradient(180deg,#9479FF,#6E4DF6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35),0 0 0 4px rgba(124,92,255,.14),0 10px 30px -8px rgba(124,92,255,.7)}
 .btn-s{min-height:40px;padding:0 16px;font-size:14px;border-radius:10px}
+.btn-anim{position:relative;overflow:hidden;isolation:isolate}
+.btn-anim::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}
+@media (prefers-reduced-motion:no-preference){
+  .btn-anim{animation:bglow 2.6s ease-in-out infinite}
+  .btn-anim::after{animation:bshine 3.2s ease-in-out infinite}
+  .btn-anim:hover{animation-play-state:paused}
+  @keyframes bshine{0%,55%{left:-60%}85%,100%{left:130%}}
+  @keyframes bglow{0%,100%{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35),0 0 0 4px rgba(124,92,255,.14),0 10px 30px -8px rgba(124,92,255,.7)}50%{box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 8px rgba(124,92,255,.2),0 14px 40px -6px rgba(124,92,255,.95)}}
+}
 .lnk{display:inline-flex;align-items:center;gap:6px;color:var(--acc3);font-weight:500;font-size:15px}
 .lnk svg{transition:transform .2s}
 .lnk:hover svg{transform:translateX(3px)}
@@ -114,8 +123,8 @@ ul{padding:0;list-style:none}
 .h1{font:500 clamp(40px,5.4vw,72px)/1.04 'Inter Tight','Inter',sans-serif;letter-spacing:-.05em;text-wrap:balance;color:#fff;max-width:19ch}
 .h1 span{background:linear-gradient(180deg,#bdb8cc,#6f6a85);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .12em .08em;margin:0 -.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hpts{margin:30px 0 36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;max-width:860px;text-align:left}
-.hpts li{display:flex;gap:12px;align-items:flex-start;color:#c9c5d8;font-size:15.5px;line-height:1.5}
-.hpts .tk{margin-top:1px}
+.hpts li{display:flex;gap:12px;align-items:center;color:#c9c5d8;font-size:15.5px;line-height:1.5}
+.hpts .tk{flex:none}
 .hero-act{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .hero-act .btn{height:48px;min-height:48px}
 .hero-act .btn-g{box-shadow:inset 0 0 0 1px var(--line2),0 0 0 4px rgba(255,255,255,.04)}
@@ -982,7 +991,7 @@ main>.sec:nth-of-type(4n)::after{background:radial-gradient(ellipse 50% 50% at 5
 
 <h1 class="h1">Помогаем бизнесу<br><span>привлекать клиентов через сайт</span></h1>
 <ul class="hpts"><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Привлекаем заявки через SEO, контекст и другие каналы</span></li><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Берём на себя всё необходимое для роста сайта: техподдержку, контент, дизайн, маркетинг</span></li><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Создаем сайты любой сложности: от типовых CMS до кастомных решений с нуля</span></li><li><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Разрабатываем мобильные приложения, ERP/CRM-системы, блокчейн-проекты</span></li></ul>
-<div class="hero-act"><a class="btn btn-p" href="#call" data-call>Заказать консультацию</a><button class="btn btn-g btn-play" type="button" data-video><span class="play"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" fill="currentColor"/></svg></span>Смотреть видео</button></div>
+<div class="hero-act"><a class="btn btn-p btn-anim" href="#call" data-call>Заказать консультацию</a><button class="btn btn-g btn-play" type="button" data-video><span class="play"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" fill="currentColor"/></svg></span>Смотреть видео</button></div>
 </div>
 <div class="mock" aria-hidden="true" data-anim>
 <div class="flt f1"><span class="tk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>SEO-продвижение</div>
